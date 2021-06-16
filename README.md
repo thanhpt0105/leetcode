@@ -1,2 +1,2 @@
-# leetcode
-Play With Algorithm
+# Play With Algorithm
+Challenge leetcode algorithm
