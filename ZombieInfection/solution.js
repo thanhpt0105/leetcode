@@ -3,6 +3,7 @@ var zombieWolrd = function(size, zombiePosition, creaturePositions, instructions
     let infectedList = [];
     let zombieFinalPosition = [];
     //first zombie moves
+    console.log('Zombie at (' + zombiePosition + ')');
     for (let i = 0;  i < instructionList.length; i++) {
         const newPosition = move(size, zombiePosition, instructionList[i]);
         zombiePosition = newPosition;
@@ -11,12 +12,12 @@ var zombieWolrd = function(size, zombiePosition, creaturePositions, instructions
             infectedList.push(newZombie);
         }
     } 
+    console.log('-----------------------');
     zombieFinalPosition.push(zombiePosition);
-    // console.log(creaturePositions);
-    // console.log(infectedList);
     //other zombie moves
     while (infectedList.length > 0) {
         newZombiePosition = infectedList[0];
+        console.log('Zombie at (' + newZombiePosition + ')');
         for (let i = 0;  i < instructionList.length; i++) {
             const newPosition = move(size, newZombiePosition, instructionList[i]);
             newZombiePosition = newPosition;
@@ -27,6 +28,7 @@ var zombieWolrd = function(size, zombiePosition, creaturePositions, instructions
         }
         zombieFinalPosition.push(newZombiePosition); 
         infectedList.splice(0,1);
+        console.log('-----------------------');
     }
     console.log('Zombies position: ');
     console.log(zombieFinalPosition);
@@ -83,9 +85,14 @@ var checkInfected = function(zombieCurrentPosition, creaturePositions) {
     return newZombie;
 }
 
-const instructions = 'RDRU';
-const creaturePositions = [[0,1], [1,2], [1,1]];
+// const instructions = 'RDRU';
+// const creaturePositions = [[0,1], [1,2], [1,1]];
+// const size = 4;
+// const zombiePosition = [3,1];
+// zombieWolrd(4, zombiePosition, creaturePositions, instructions);
+
+const instructions = 'RDRUR';
+const creaturePositions = [[2,1], [3,2], [2,3]];
 const size = 4;
 const zombiePosition = [3,1];
 zombieWolrd(4, zombiePosition, creaturePositions, instructions);
-
