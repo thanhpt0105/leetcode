@@ -78,6 +78,37 @@ class LinkedList {
         this.head = first;
         return this;
     }
+
+    reverseSubList(m, n) { 
+        let prev = null;
+        let curr = this.head;
+        while (m > 1) {
+            prev = curr;
+            curr = curr.next;
+            m--;
+            n--;
+        }
+        let reverseTail = curr;
+        let second = curr.next;
+        let temp = null;
+        console.log(curr);
+        console.log(second);
+        while (n > 1) {
+            temp = second.next;
+            second.next = curr;
+            curr = second;
+            second = temp;
+            n--;
+        }
+        reverseTail.next = second;
+        if (prev !== null) {
+            prev.next = curr;
+        } else {
+            console.log(curr);
+            this.head = curr;
+        }
+        return this;
+    }
 }
 
 class Node {
@@ -87,13 +118,19 @@ class Node {
     }
 }
 
-const list = new LinkedList(10);
+const list = new LinkedList(1);
+list.append(2);
+list.append(3);
+list.append(4);
 list.append(5);
-list.append(15);
-list.prepend(1);
-console.log(list.toString());
-// list.insert(2, 3);
 // console.log(list.toString());
-// console.log(list.remove(1));
+// list.reverseSubList(1,3);
 // console.log(list.toString());
-console.log(list.reverse().toString());
+// console.log(list.reverseSubList(1,3));
+// console.log(list.toString());
+// console.log(list.toString());
+
+const list2 = new LinkedList(1);
+list2.append(2);
+list2.reverseSubList(1,2);
+console.log(list2.toString());
